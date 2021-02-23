@@ -5,154 +5,154 @@ subtitle: "From one color to another"
 section: css
 ---
 
-When we talk about gradients in CSS, we talk about **gradients of colors**.
+Cuando hablamos de degradados en CSS, hablamos de **degradados de colores**.
 
-There are 2 types of gradients in CSS:
+Hay 2 tipos de degradados en CSS:
 
-* **linear**: colors go from point to another, in a _straight_ line
-* **radials**: colors go from the center of a circle to its edges, in _all_ directions
+* **lineal**: los colores van de un punto a otro, en una línea _straight_
+* **radiales**: los colores van desde el centro de un círculo hasta sus bordes, en _todas_direcciones 
 
-A gradient is considered a **background image** and must be used with the according property.
+Un degradado se considera una **imagen de fondo** y debe utilizarse con la propiedad according.
 
-### linear-gradient
+### gradiente lineal
 
-The syntax for linear gradients is [quite complex](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient), but the basic idea is to define:
+La sintaxis de los degradados lineales es [bastante compleja](https://developer.mozilla.org/en-US/docs/Web/CSS/linear-gradient), pero la idea básica es definir:
 
-* which **colors** you want
-* where these colors must appear **along the axis** (at the start, middle, end, etc.)
-* in which **direction** the gradient must go
+* que **colores** que desea
+* donde estos colores deben aparecer **a lo largo del eje** (al principio, medio, extremo, etc.)
+* en el que **dirección** el degradado debe ir
 
-Let's start with a simple 2 color gradient:
+Comencemos con un simple degradado de 2 colores:
 
 {% highlight css %}
 div{ background-image: linear-gradient(red, blue);}
 {% endhighlight %}
 
 {% highlight html %}
-<div>A simple vertical background gradient</div>
+<div>Un simple degradado de fondo vertical</div>
 {% endhighlight %}
 
 <div class="result" style="padding: 1rem;">
-  <div style="background-image: linear-gradient(red, blue);">A simple vertical background gradient</div>
+  <div style="background-image: linear-gradient(red, blue);">Un simple degradado de fondo vertical</div>
 </div>
 
-By default:
+De forma predeterminada:
 
-* the **direction** is **vertical**, from _top_ to _bottom_
-* the **first** color is at the **start** (top)
-* the **second** color is at the **end** (bottom)
+* la **dirección** es **vertical**, de _top_ a _bottom_
+* el color **primero** está en el **inicio** (arriba)
+* el color **segundo** está en el **final** (abajo)
 
-#### Changing the direction
+#### Cambiar la dirección
 
-If the top to bottom direction doesn't suit you, you can alter it by either:
+Si la dirección de arriba a abajo no le conviene, puede modificarla por cualquiera de las dos:
 
-* defining the **destination of the gradient**, with keywords like `to left top`
-* defining a specific **angle** in degrees like `45 deg`
+* definiendo el **destino del degradado**, con palabras clave como `to left top`
+* definiendo un **ángulo** específico en grados como `45 deg`
 
-This direction must be set _before_ the colors:
+Esta dirección debe establecerse _antes_ los colores:
 
 {% highlight css %}
 div{ background-image: linear-gradient(to bottom right, yellow, purple); width: 200px;}
 {% endhighlight %}
 
 {% highlight html %}
-<div>A diagonal gradient from the top left corner to the bottom right one</div>
+<div>Un degradado diagonal desde la esquina superior izquierda hasta la parte inferior derecha</div>
 {% endhighlight %}
 
 <div class="result" style="padding: 1rem;">
-  <div style="background-image: linear-gradient(to bottom right, yellow, purple); width: 200px;">A diagonal gradient from the top left corner to the bottom left one</div>
+  <div style="background-image: linear-gradient(to bottom right, yellow, purple); width: 200px;">Un degradado diagonal desde la esquina superior izquierda hasta la parte inferior derecha</div>
 </div>
 
-If you want a more **specific angle**, you can use a value in **degrees**:
+Si desea un ángulo más **específico**, puede utilizar un valor en **grados**:
 
-* `0deg` is the default value, from top to bottom
-* `20deg` is slightly diagonal, going **clockwise**
-* `90deg` is like 3pm, from right to left
-* `180deg` is from bottom to top
+* `0deg` es el valor predeterminado, de arriba a abajo
+* `20deg` es ligeramente diagonal, va **en el sentido de las agujas del reloj**
+* `90deg` es como las 15:00, de derecha a izquierda
+* `180deg` es de abajo a arriba
 
 {% highlight css %}
 div{ background-image: linear-gradient(20deg, green, blue); width: 150px;}
 {% endhighlight %}
 
 {% highlight html %}
-<div>A diagonal gradient with an angle of 20 degrees</div>
+<div>Un gradiente diagonal con un ángulo de 20 grados</div>
 {% endhighlight %}
 
 <div class="result" style="padding: 1rem;">
-  <div style="background-image: linear-gradient(20deg, green, blue); width: 150px;">A diagonal gradient with an angle of 20 degrees</div>
+  <div style="background-image: linear-gradient(20deg, green, blue); width: 150px;">Un gradiente diagonal con un ángulo de 20 grados</div>
 </div>
 
-#### Adding more colors
+#### Adición de más colores
 
-You can insert as many colors as you want. They will be **equally distributed** along the axis:
+Puede insertar tantos colores como desee. Se distribuirán **igualmente** a lo largo del eje:
 
-* **2 colors**: 0% and 100%
-* **3 colors**: 0%, 50% and 100%
-* **4 colors**: 0%, 33%, 67% and 100%
+* **2 colores**: 0% y 100%
+* **3 colores**: 0%, 50% y 100%
+* **4 colores**: 0%, 33%, 67% y 100%
 
 {% highlight css %}
 div{ background-image: linear-gradient(orange, grey, yellow); width: 150px;}
 {% endhighlight %}
 
 {% highlight html %}
-<div>A rather ugly gradient, but you get the idea</div>
+<div>Un gradiente bastante feo, pero tienes la idea</div>
 {% endhighlight %}
 
 <div class="result" style="padding: 1rem;">
-  <div style="background-image: linear-gradient(orange, grey, yellow); width: 150px;">A rather ugly gradient, but you get the idea</div>
+  <div style="background-image: linear-gradient(orange, grey, yellow); width: 150px;">Un gradiente bastante feo, pero tienes la idea</div>
 </div>
 
-#### Setting specific color stops
+#### Configuración de paradas de color específicas
 
-If you don't want colors to equally distributed, you can set specific **color stop positions**, using either percentages `%` or pixels `px`:
+Si no desea que los colores se distribuyan por igual, puede establecer posiciones de parada de color específicas**, utilizando cualquiera de los porcentajes `%` o pixels `px`:
 
 {% highlight css %}
 div{ background-image: linear-gradient(orange, grey 10%, yellow 50%); width: 150px;}
 {% endhighlight %}
 
 {% highlight html %}
-<div>An even uglier gradient, but you get the idea</div>
+<div>Un gradiente aún más feo, pero tienes la idea</div>
 {% endhighlight %}
 
 <div class="result" style="padding: 1rem;">
-  <div style="background-image: linear-gradient(orange, grey 10%, yellow 50%); width: 150px;">An even uglier gradient, but you get the idea</div>
+  <div style="background-image: linear-gradient(orange, grey 10%, yellow 50%); width: 150px;">Un gradiente aún más feo, pero tienes la idea</div>
 </div>
 
-In this setup:
+En esta configuración:
 
-* `orange` has no stop position, so it defaults to **zero** `0%`
-* `grey` is closer to the top, at `10%` instead of `50%`
-* `yellow` takes half of the gradient, from `50%` to the end `100%`
+* `orange` no tiene ninguna posición de parada, por lo que por defecto a **cero** `0%`
+* `grey` está más cerca de la parte superior, en `10%` instead of `50%`
+* `yellow` toma la mitad del gradiente, de `50%` hasta el final `100%`
 
-### radial-gradient
+### gradiente radial
 
-While linear gradients follow a single-line axis, **radial gradients** spread out in all directions. Their syntax is fairly similar to linear ones, as they both have **color stops**. But instead of specifying a _direction_ you need to specify:
+Mientras que los degradados lineales siguen un eje de una sola línea, **degradados radiales** se extienden en todas las direcciones. Su sintaxis es bastante similar a las lineales, ya que ambas tienen paradas de color **. Pero en lugar de especificar un _direction_ debe especificar:
 
-* a **shape**: either a circle or an ellipse
-* a **starting point**: which will be the center of the circle/ellipse
-* an **end point**: where the edge of the circle/ellipse will be
+* una **shape**: ya sea un círculo o una elipse
+* un **punto de partida**: que será el centro del círculo/elipse
+* un **punto final**: donde el borde del círculo / elipse será
 
 {% highlight css %}
 div{ background-image: radial-gradient(red, yellow); padding: 1rem; width: 300px;}
 {% endhighlight %}
 
 {% highlight html %}
-<div>This looks like the sun, doesn't it?</div>
+<div>Esto parece el sol, ¿no?e</div>
 {% endhighlight %}
 
 <div class="result" style="padding: 1rem;">
-  <div style="background-image: radial-gradient(red, yellow); padding: 1rem; width: 300px;">This looks like the sun, doesn't it?</div>
+  <div style="background-image: radial-gradient(red, yellow); padding: 1rem; width: 300px;">Esto parece el sol, ¿no?e</div>
 </div>
 
-By default:
+De forma predeterminada:
 
-* the gradient is an **ellipse**
-* the first color starts at the **center**
-* the last color ends at the **farthest corner**
+* el degradado es una **elipse**
+* el primer color comienza en el **center**
+* el último color termina en la esquina **más lejana**
 
-#### start position
+#### posición de inicio
 
-The **start position** works like **[background positions](/css-background.html#background-position)**. You set it with the `at` keyword.
+La posición **start** funciona como **[posiciones de fondo](/css-background.html#background-position)**. You set it with the `at` keyword.
 
 {% highlight css %}
 div{ background-image: radial-gradient(at top right, black, lightgrey); padding: 1rem; width: 300px;}
